@@ -24,6 +24,7 @@
  1. [`NSNumber` bridging](NSNumber%20bridging)
  1. [`Limiting @objc inference`](Limiting%20@objc%20inference)
  1. [Composing classes and protocols](Composing%20classes%20and%20protocols)
+ 1. [Distinguish between single-tuple and multiple-argument function types](Distinguish%20between%20single-tuple%20and%20multiple-argument%20function%20types)
 
  ## Instructions
 
@@ -37,8 +38,6 @@
 
  It might be a good idea to quit and relaunch Xcode after switching snapshots. I occasionally had problems with syntax highlighting and code completion that a relaunch fixed.
 
- If you want to switch between multiple Swift versions on the command line (e.g. to play with Swift 4 in the REPL or to build Swift packages with Swift 4, I recommend Kyle Fuller’s excellent [swiftenv](https://swiftenv.fuller.li/).
-
  [Next page](@next)
  */
-print("Hello")
+
