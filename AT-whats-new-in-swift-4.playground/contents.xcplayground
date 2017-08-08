@@ -7,13 +7,10 @@
         <page name='private in same-file extensions'/>
         <page name='Key paths'/>
         <page name='Encoding and decoding'/>
-        <page name='Associated type constraints'/>
+        <page name='Swift Archival &amp; Serialization'/>
         <page name='Dictionary and Set enhancements'/>
         <page name='swapAt'/>
-        <page name='reduce with inout'/>
         <page name='Generic subscripts'/>
-        <page name='Integer protocols'/>
-        <page name='NSNumber bridging'/>
         <page name='Limiting @objc inference'/>
         <page name='Composing classes and protocols'/>
         <page name='Distinguish between single-tuple and multiple-argument function types'/>
