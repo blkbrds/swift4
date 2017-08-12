@@ -14,5 +14,6 @@
         <page name='Limiting @objc inference'/>
         <page name='Composing classes and protocols'/>
         <page name='Distinguish between single-tuple and multiple-argument function types'/>
+        <page name='Conditional conformances'/>
     </pages>
 </playground>
