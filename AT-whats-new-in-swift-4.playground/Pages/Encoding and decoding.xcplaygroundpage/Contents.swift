@@ -6,9 +6,34 @@ import Foundation
 */
 // Custom data type and some instance of it:
 
+class JsonCoder<Element> where Element: Codable {
+    
+    var element: Element
+    
+    init(_ element: Element) {
+        self.element = element
+    }
+    
+    func toData() -> Data? {
+        return try? JSONEncoder().encode(element)
+    }
+    
+    //Encode country to a Data representation of JSON like this:
+    func toJson() -> String {
+        guard let data = toData(), let json = String(data: data, encoding: .utf8) else { return "" }
+        return json
+    }
+    
+    class func toObject(data: Data) throws -> Element {
+        return try JSONDecoder().decode(Element.self, from: data)
+    }
+}
+
 struct Country: Codable {
+    
     var name: String
     var cities: [City]
+    
     init(name: String, cities: [City]) {
         self.name = name
         self.cities = cities
@@ -24,28 +49,12 @@ struct City: Codable {
     }
 }
 
-extension Country {
-    
-    func toData() -> Data? {
-        return try? JSONEncoder().encode(self)
-    }
-    
-    //Encode country to a Data representation of JSON like this:
-    func toJson() -> String {
-        guard let data = toData(), let json = String(data: data, encoding: .utf8) else { return "" }
-        return json
-    }
-    
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(Country.self, from: data)
-    }
-}
-
 let country = Country(name: "Viet Nam", cities: [City(name: "Da Nang", district: ["Lien Chieu", "Thanh Khe"])])
-print(country.toJson()) //{"name":"Viet Nam","cities":[{"name":"Da Nang","district":["Lien Chieu","Thanh Khe"]}]}
+let jsonCoder = JsonCoder<Country>(country)
+print(jsonCoder.toJson()) //{"name":"Viet Nam","cities":[{"name":"Da Nang","district":["Lien Chieu","Thanh Khe"]}]}
 
 //Decode json back into a new Country instance
-if let data = country.toData(), let newCountry = try? Country(data: data)  {
+if let data = jsonCoder.toData(), let newCountry = try? JsonCoder<Country>.toObject(data: data) {
     print(newCountry.name) // Viet Nam
     for city in newCountry.cities {
         print(city.name) // Da Nang
